@@ -1,0 +1,10 @@
+server:
+  port: 9090
+
+
+#thymeleaf
+spring:
+  thymeleaf:
+    prefix: classpath:/templates/views/
+    suffix: .html
+    cache: false
