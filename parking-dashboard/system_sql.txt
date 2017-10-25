@@ -1,0 +1,64 @@
+用户_角色关联表
+CREATE TABLE `sys_user_role` (
+  `role_id` int(10) NOT NULL DEFAULT '-1' COMMENT '角色ID',
+  `sys_user_id` int(10) NOT NULL DEFAULT '-1' COMMENT '用户ID'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户_角色关联表';
+
+
+系统用户表
+CREATE TABLE `sys_user` (
+  `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `user_name` varchar(20) NOT NULL DEFAULT '' COMMENT '登录名',
+  `nick_name` varchar(20) DEFAULT '' COMMENT '昵称',
+  `real_name` varchar(20) DEFAULT '' COMMENT '真实姓名',
+  `password` varchar(20) NOT NULL DEFAULT '' COMMENT '密码',
+  `login_ip` varchar(16) DEFAULT '00.00.00.00' COMMENT 'ip地址',
+  `login_times` int(6) DEFAULT '1' COMMENT '登录次数',
+  `email` varchar(20) DEFAULT '' COMMENT '邮箱',
+  `mobile` varchar(13) DEFAULT '' COMMENT '电话',
+  `created_at` datetime DEFAULT '2017-01-01 00:00:00' COMMENT '创建日期',
+  `updated_at` datetime DEFAULT '2017-01-01 00:00:00' COMMENT '修改日期',
+  `created_by` varchar(20) DEFAULT '' COMMENT '创建人',
+  `updated_by` varchar(20) DEFAULT '' COMMENT '修改人员',
+  `state` int(1) DEFAULT '1' COMMENT '0:无效，1有效',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='系统用户表';
+
+
+功能_角色关联表
+CREATE TABLE `sys_role_function` (
+  `role_id` int(10) NOT NULL DEFAULT '-1' COMMENT '角色ID',
+  `function_id` int(10) NOT NULL DEFAULT '-1' COMMENT '功能ID'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='功能_角色关联表';
+
+
+系统角色表
+CREATE TABLE `sys_role` (
+  `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `role_name` varchar(20) NOT NULL DEFAULT '' COMMENT '角色名称',
+  `introduce` varchar(100) DEFAULT '' COMMENT '介绍',
+  `created_at` datetime DEFAULT '2017-01-01 00:00:00' COMMENT '创建日期',
+  `updated_at` datetime DEFAULT '2017-01-01 00:00:00' COMMENT '修改日期',
+  `created_by` varchar(20) DEFAULT '' COMMENT '创建人',
+  `updated_by` varchar(20) DEFAULT '' COMMENT '修改人员',
+  `state` int(1) DEFAULT '1' COMMENT '0:无效，1有效',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='系统角色表';
+
+
+功能模块表
+CREATE TABLE `sys_function` (
+  `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `function_name` varchar(20) NOT NULL DEFAULT '' COMMENT '功能名称',
+  `function_url` varchar(100) DEFAULT '' COMMENT '请求路径',
+  `function_parent_id` int(10) DEFAULT NULL COMMENT '父菜单Id',
+  `introduce` varchar(100) DEFAULT '' COMMENT '简介',
+  `level` int(3) DEFAULT '0' COMMENT '排序',
+  `created_at` datetime DEFAULT '2017-01-01 00:00:00' COMMENT '创建日期',
+  `updated_at` datetime DEFAULT '2017-01-01 00:00:00' COMMENT '修改日期',
+  `created_by` varchar(20) DEFAULT '' COMMENT '创建人',
+  `updated_by` varchar(20) DEFAULT '' COMMENT '修改人员',
+  `state` int(1) DEFAULT '1' COMMENT '0:无效，1有效',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `function_name` (`function_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='功能模块表';

@@ -15,15 +15,17 @@ import java.util.List;
  * Description:
  */
 @Repository
-public class StudentDao extends BaseDao<Student,QStudent> {
-    public StudentDao(){this.setQEntity(QStudent.student);}
+public class StudentDao extends BaseDao<Student, QStudent> {
+    public StudentDao() {
+        this.setQEntity(QStudent.student);
+    }
 
-    public List<Student> listStudnet(){
-       return this.getEntities(null,null);
+    public List<Student> listStudnet() {
+        return this.getEntities(null, null);
     }
 
     @Transactional(readOnly = false)
-    public void save(){
+    public void save() {
         Student student = new Student();
         student.setCreatedAt(LocalDateTime.now());
         student.setUpdatedAt(LocalDateTime.now());

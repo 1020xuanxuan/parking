@@ -8,10 +8,13 @@ spring:
     prefix: classpath:/templates/views/
     suffix: .html
     cache: false
+  mvc:
+    static-path-pattern: classpath:/static/**
+
 
 #Datasource
 spring.datasource.dashboard:
-  url: jdbc:mysql://127.0.0.1:3306/xnw_sys
+  url: jdbc:mysql://127.0.0.1:3306/parking_sys
   username: root
   password: root
   # 使用druid数据源
