@@ -26,13 +26,13 @@ public class DBConfig {
 
     @Bean
     @Primary
-    PlatformTransactionManager dashBoardTransactionManager() {
+    public PlatformTransactionManager dashBoardTransactionManager() {
         return new JpaTransactionManager(dashboardEntityManagerFactory().getObject());
     }
 
     @Bean
     @Primary
-    EntityManager dashBoardEntityManager() {
+    public EntityManager dashBoardEntityManager() {
         return dashboardEntityManagerFactory().getObject().createEntityManager();
     }
 
@@ -45,7 +45,7 @@ public class DBConfig {
 
     @Bean
     @Primary
-    LocalContainerEntityManagerFactoryBean dashboardEntityManagerFactory() {
+    public LocalContainerEntityManagerFactoryBean dashboardEntityManagerFactory() {
         HibernateJpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
 
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();

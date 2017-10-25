@@ -1,5 +1,9 @@
 package com.parking.config;
 
+import com.parking.interceptor.UserSessionInterceptor;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.util.ResourceUtils;
@@ -27,6 +31,12 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(userSessionInterceptor());
         super.addInterceptors(registry);
+    }
+
+    @Bean
+    public UserSessionInterceptor userSessionInterceptor(){
+        return new UserSessionInterceptor();
     }
 }
