@@ -1,5 +1,7 @@
 package com.parking.entity.system;
 
+import com.parking.entity.UuidEntity;
+
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -20,7 +22,7 @@ import lombok.Setter;
 @Table(name = "sys_user")
 @Getter
 @Setter
-public class SysUser {
+public class SysUser extends UuidEntity{
     private String userName;
 
     private String nickName;
